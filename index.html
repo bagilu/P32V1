@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>網頁繪本 Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>網頁繪本 Demo</h1>
+        <p class="subtitle">HTML + CSS + JavaScript ｜ GitHub Pages 可直接部署</p>
+      </div>
+      <button id="startBtn" class="primary-btn">開始閱讀</button>
+    </header>
+
+    <main class="reader-wrap">
+      <section class="book-stage" aria-label="storybook">
+        <div id="book" class="book">
+          <div class="spine"></div>
+          <button id="leftTap" class="tap-zone left" aria-label="上一頁"></button>
+          <button id="rightTap" class="tap-zone right" aria-label="下一頁"></button>
+
+          <div id="pageContainer" class="page-container">
+            <div class="page left-page">
+              <img id="leftImg" src="" alt="左頁" />
+              <div class="page-label" id="leftLabel"></div>
+            </div>
+
+            <div id="flipSheet" class="flip-sheet" aria-hidden="true">
+              <div class="flip-front"></div>
+              <div class="flip-back"></div>
+            </div>
+
+            <div class="page right-page">
+              <img id="rightImg" src="" alt="右頁" />
+              <div class="page-label" id="rightLabel"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="control-panel">
+        <div class="panel-card">
+          <div class="status-row">
+            <span>目前跨頁</span>
+            <strong id="spreadInfo">1 - 2</strong>
+          </div>
+          <div class="status-row">
+            <span>總頁數</span>
+            <strong id="totalInfo">0</strong>
+          </div>
+          <div class="status-row">
+            <span>音訊狀態</span>
+            <strong id="audioInfo">尚未啟用</strong>
+          </div>
+        </div>
+
+        <div class="panel-card buttons">
+          <button id="prevBtn">上一頁</button>
+          <button id="nextBtn">下一頁</button>
+        </div>
+
+        <div class="panel-card">
+          <h2>使用說明</h2>
+          <ol>
+            <li>先按一次「開始閱讀」啟用音訊。</li>
+            <li>可點左右按鈕，或直接點書本左右半邊翻頁。</li>
+            <li>每次翻頁會播放翻頁聲，並依序播放左右頁的 MP3。</li>
+          </ol>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <audio id="flipAudio" preload="auto" src="audio/page-flip.mp3"></audio>
+  <audio id="narrationAudio" preload="auto"></audio>
+
+  <script src="book-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
